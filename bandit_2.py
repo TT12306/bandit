@@ -39,7 +39,7 @@ for i in range(100):
     print('Epoch {} start: '.format(i + 1))
     pi_t = get_action_probabilities(H)
     
-    # 使用softmax策略选择一个老虎机
+    # 根据得到的概率分布选择一个老虎机
     chosen_machine = np.random.choice(range(num_machines), p=pi_t)
     reward = np.random.normal(rewards_mean[chosen_machine], 10)
     rewards[chosen_machine] += reward
@@ -48,7 +48,6 @@ for i in range(100):
     baseline = get_baseline(rewards, times_played)
     
     for j in range(num_machines):
-        # 确保不会除以0
         if times_played[j] > 0:
             average_reward = rewards[j] / times_played[j]
         else:
