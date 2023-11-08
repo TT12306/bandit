@@ -14,7 +14,6 @@ times_played = np.zeros(num_machines)  # 初始化每个老虎机拉的次数
 def get_action_probabilities(H):
     exp_H = np.exp(H - np.max(H))
     return exp_H / np.sum(exp_H)
-    ##
 
 # 更新行动的偏好值
 def update_preferences(H, chosen_machine, reward, baseline, alpha):
